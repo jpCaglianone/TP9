@@ -16,9 +16,9 @@ scriptCriacao_tChamado = '''
         id_Tecnico INTEGER,
         id_Usuario INTEGER,
         id_Prioridade INTEGER,
-        FOREIGN KEY (id_tecnico) REFERENCES T_Tecnico(id),
-        FOREIGN KEY (id_usuario) REFERENCES T_Usuario(id),
-        FOREIGN KEY (id_prioridade) REFERENCES T_Prioridade(id)
+        FOREIGN KEY (id_Tecnico) REFERENCES T_Tecnico(id),
+        FOREIGN KEY (id_Usuario) REFERENCES T_Usuario(id),
+        FOREIGN KEY (id_Prioridade) REFERENCES T_Prioridade(id)
     )
 '''
 
@@ -100,6 +100,20 @@ scriptInsert_tPrioridade = {
     VALUES (?)
 ''',
 'dado': dados.prioridade}
+
+
+
+# Relação dos usuários em ordem crescente, com seus respectivos departamentos.
+script_exercicio1 = f'''
+                  SELECT * FROM T_Usuario u
+                  inner join T_Departamento d
+                  on u.id_departamento = d.id
+                  ORDER BY u.nome               
+'''
+
+SELECT C.*, U.nome AS nome_usuario_abertura
+FROM T_Chamado C
+INNER JOIN T_Usuario U ON C.id_Usuario = U.id
 
 
 

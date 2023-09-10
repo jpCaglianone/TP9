@@ -20,7 +20,7 @@ def criacao_inicial():
         for i in scripts.scriptsInserts:
             for row in i['dado']:
                 cursor.execute(i['script'], row)
-                print("ok")
+                print("ok!")
         conn.commit()
     except Exception as error:
       # conn.rollback()

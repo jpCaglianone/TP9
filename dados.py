@@ -1,7 +1,7 @@
 from datetime import date
 
 usuario = [
-    ["Nome","Email","Id_Departamento"],
+
     ["Felipe Guimarães","fguimaraes@healthtech.com",6],
     ["Lucas Pereira","fguimaraes@healthtech.com",2],
     ["Maria Silva","fguimaraes@healthtech.com",4],
@@ -25,7 +25,6 @@ usuario = [
 ]
 
 departamento = [
-    ["Descrição"],
     ["Financeiro/Contabilidade"],
     ["Área Técnica"],
     ["Administração"],
@@ -35,7 +34,7 @@ departamento = [
 ]
 
 chamado = [
-    ["Descrição", "Id_Prioridade", "Status", "Data_abertura", "Data_Fechamento", "Id_Tecnico","Id_Usuario"],
+    
     ["Troca do mouse", "2", "Aberto" ,date(2023,6,11), 0, 4, 1],
     ["Recarga tinta impressora", "3", "Fechado" ,date(2022,2,14), date(2022,3,1), 4, 1],
     ["Habilitação site pesquisa", "3", "Aberto" ,date(2023,6,11), 0, 2, 8],
@@ -54,7 +53,7 @@ chamado = [
 ]
 
 tecnico = [
-    ["Nome", "Email", "Especialidade"],
+   
     ["Joào Xavier", "jxavieir@healthtech.com", "Softwares"],
     ["Ana Coutinho", "acoutinho@healthtech.com", "Redes e segurança"],
     ["Fabiola Pinheiro", "fpinheiro@healthtech.com", "Segurança"],
@@ -63,7 +62,7 @@ tecnico = [
 ]
 
 prioridade =[
-    ["Prioridade"],
+
     ["Alta"],
     ["Média"],
     ["Baixa"]

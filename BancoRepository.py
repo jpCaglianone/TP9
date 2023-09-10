@@ -1,39 +1,39 @@
 import sqlite3 as sql
-import os
 import dados
 import scriptsBanco as scripts
 
 def criacao_inicial():
     try:
-        conn = sql
-        j = 0
-        for i in scripts.nomesTabelas:
-            # colocar a verificacao de arquivo existente
-            conn = sql.connect(i)
-            print(f"Tabela {i} criada")
+        for i, nome in enumerate(scripts.nomesTabelas):
+            # Conectar ao banco de dados
+            conn = sql.connect(nome + ".db")  # Adicione a extensão .db ao nome do banco de dados
             cursor = conn.cursor()
             conn.execute('BEGIN')
-            cursor.execute(scripts.scriptsCriacao[j])
-            print(f"Colunas inseridas em {i}")
-
-            for row in scripts.scriptsInserts[j]['dado']:
-                cursor.execute(scripts.scriptsInserts[j]['script'], row)
-                print(f'linha inserida em {i}')
-
-            print()
-            j += 1
+            
+            # Criar tabela
+            cursor.execute(scripts.scriptsCriacao[i])
+            
+            # Inserir dados
+            for row in scripts.scriptsInserts[i]['dado']:
+                cursor.execute(scripts.scriptsInserts[i]['script'], row)
+              
             conn.commit()
+            conn.close()
 
     except Exception as error:
         conn.rollback()
         print("Erro: " + str(error))
 
-    finally:
-        conn.close()
+def select_teste(nome):
+    resultado = ""
+    conn = sql.connect(nome + ".db")
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT * FROM {nome}")
+    rows = cursor.fetchall()    
+  
+    for row in rows:
+        resultado += " ".join(map(str, row)) + " - "
+    
+    conn.close()
 
-#
-# f       or i in scripts.scriptsInserts:
-#             for row in i['dado']:
-#                 cursor.execute(i['script'], row)
-#                 print("OK")
-#         conn.commit()
+    return resultado

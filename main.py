@@ -5,12 +5,13 @@ app = FastAPI()
 
 br.criacao_inicial()
 
-# Default root endpoint
+
 @app.get("/")
 async def root():
   return { "message": "Hello world" }
 
-# Example path parameter
-@app.get("/name/{name}")
-async def name(name: str):
-  return { "message": f"Hello {name}" }
+
+@app.get("/select/{nome_tabela}")
+async def selectTabela(nome_tabela: str):
+  
+  return { "message": f" {br.select_teste(nome_tabela)}" }

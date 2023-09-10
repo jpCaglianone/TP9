@@ -3,41 +3,37 @@ import os
 import dados
 import scriptsBanco as scripts
 
-
 def criacao_inicial():
-  
     try:
-      conn = sql
-      for i in scripts.nomesTabelas:
-        #colocar a verificacao de arquivo existente
-        conn = sql.connect(i)
-        
-      for i in scripts.scriptsCriacao:
-        cursor = conn.cursor()
-        conn.execute('BEGIN')
-        cursor.execute(i)
-        
-        for i in scripts.scriptsInserts:
-            for row in i['dado']:
-                cursor.execute(i['script'], row)
-                print("ok!")
-        conn.commit()
+        conn = sql
+        j = 0
+        for i in scripts.nomesTabelas:
+            # colocar a verificacao de arquivo existente
+            conn = sql.connect(i)
+            print(f"Tabela {i} criada")
+            cursor = conn.cursor()
+            conn.execute('BEGIN')
+            cursor.execute(scripts.scriptsCriacao[j])
+            print(f"Colunas inseridas em {i}")
+
+            for row in scripts.scriptsInserts[j]['dado']:
+                cursor.execute(scripts.scriptsInserts[j]['script'], row)
+                print(f'linha inserida em {i}')
+
+            print()
+            j += 1
+            conn.commit()
+
     except Exception as error:
-      # conn.rollback()
-      print("Erro: " + str(error))
-    
+        conn.rollback()
+        print("Erro: " + str(error))
+
     finally:
-      conn.close()
+        conn.close()
 
-
-def consulta_teste():
-    for i in scripts.nomesTabelas:
-      conn = sql.connect(i)
-      cursor = conn.cursor()
-      cursor.execute(f"SELECT * FROM {i}")
-      rows = cursor.fetchall()
-  
-      for row in rows:
-          print(row[1])
-      conn.close()
-    
+#
+# f       or i in scripts.scriptsInserts:
+#             for row in i['dado']:
+#                 cursor.execute(i['script'], row)
+#                 print("OK")
+#         conn.commit()

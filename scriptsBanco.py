@@ -39,7 +39,7 @@ scriptCriacao_tTecnico =  '''
                 email VARCHAR (50),
                 especialidade VARCHAR (40)
               )
-''' 
+'''
 
 scriptCriacao_tUsuario = '''
               CREATE TABLE IF NOT EXISTS T_Usuario(
@@ -76,10 +76,10 @@ scriptInsert_tDepartamento = {
         INSERT INTO T_Departamento (descricao)
         VALUES (?)
     ''',
-    'dado': dados.departamento 
+    'dado': dados.departamento
 }
 
-scriptInsert_tTecnico = { 
+scriptInsert_tTecnico = {
   'script': '''
     INSERT INTO T_Tecnico (nome, email, especialidade)
     VALUES (?, ?, ?)
@@ -103,10 +103,10 @@ scriptInsert_tPrioridade = {
 
 
 
-scriptsCriacao =  [scriptCriacao_tDepartamento, 
-                   scriptCriacao_tTecnico, 
-                   scriptCriacao_tPrioridade, 
-                   scriptCriacao_tUsuario, 
+scriptsCriacao =  [scriptCriacao_tDepartamento,
+                   scriptCriacao_tTecnico,
+                   scriptCriacao_tPrioridade,
+                   scriptCriacao_tUsuario,
                    scriptCriacao_tChamado]
 
 

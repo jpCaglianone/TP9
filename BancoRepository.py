@@ -53,3 +53,8 @@ def execSelects(script):
 def exercicio1():
     return execSelects(scripts.script_exercicio1)
 
+def exercicio2():
+    return execSelects(scripts.script_exercicio2)
+
+def exercicio3():
+    return execSelects(scripts.script_exercicio3)

@@ -34,22 +34,21 @@ departamento = [
 ]
 
 chamado = [
-    
-    ["Troca do mouse", "2", "Aberto" ,date(2023,6,11), 0, 4, 1],
-    ["Recarga tinta impressora", "3", "Fechado" ,date(2022,2,14), date(2022,3,1), 4, 1],
-    ["Habilitação site pesquisa", "3", "Aberto" ,date(2023,6,11), 0, 2, 8],
-    ["Queda de rede, reconfiguração de switchs", "1", "Aberto" ,date(2023,6,11), 0, 2, 6],
-    ["Sem internet", "1", "Aberto" ,date(2023,6,11), 0, 2, 1],
-    ["Mal contato cabo de rede", "2", "Aberto" ,date(2023,6,11), 0, 4, 5],
-    ["Equipamento não liga, cheiro de queimado", "1", "Aberto" ,date(2023,6,11), 0, 4, 7],
-    ["Mal contato no cabo de video", "2", "Aberto" ,date(2023,6,11), 0, 4, 8],
-    ["Atolamento de papel na impressora", "3", "Aberto" ,date(2023,6,11), 0, 4, 10],
-    ["IP com conflito geral", "1", "Aberto" ,date(2023,6,11), 0, 5, 1],
-    ["Teclado com teclas defeituosas, precisando de troca", "2", "Aberto" ,date(2023,6,11), 0, 4, 6],
-    ["Botão de ligar o computador com mal contato", "3", "Aberto" ,date(2023,6,11), 0, 5, 3],
-    ["Instalação de software homologado", "2", "Aberto" ,date(2023,6,11), 0,1, 16],
-    ["Computador com virus", "1", "Aberto" ,date(2023,6,11), 0,3, 15],
-    ["Erro compatibilidade de software", "2", "Aberto" ,date(2023,6,11), 0,1, 11]
+    ["Troca do mouse", "2", "Aberto", date(2023, 6, 11), 0, 4, 1, 3],
+    ["Recarga tinta impressora", "3", "Fechado", date(2022, 2, 14), date(2022, 3, 1), 4, 1, 8],
+    ["Habilitação site pesquisa", "3", "Aberto", date(2023, 6, 11), 0, 2, 8, 7],
+    ["Queda de rede, reconfiguração de switchs", "1", "Aberto", date(2023, 6, 11), 0, 2, 6, 2],
+    ["Sem internet", "1", "Aberto", date(2023, 6, 11), 0, 2, 1, 5],
+    ["Mal contato cabo de rede", "2", "Aberto", date(2023, 6, 11), 0, 4, 5, 9],
+    ["Equipamento não liga, cheiro de queimado", "1", "Aberto", date(2023, 6, 11), 0, 4, 7, 10],
+    ["Mal contato no cabo de video", "2", "Aberto", date(2023, 6, 11), 0, 4, 8, 4],
+    ["Atolamento de papel na impressora", "3", "Aberto", date(2023, 6, 11), 0, 4, 10, 1],
+    ["IP com conflito geral", "1", "Aberto", date(2023, 6, 11), 0, 5, 1, 6],
+    ["Teclado com teclas defeituosas, precisando de troca", "2", "Aberto", date(2023, 6, 11), 0, 4, 6, 8],
+    ["Botão de ligar o computador com mal contato", "3", "Aberto", date(2023, 6, 11), 0, 5, 3, 2],
+    ["Instalação de software homologado", "2", "Aberto", date(2023, 6, 11), 0, 1, 16, 7],
+    ["Computador com vírus", "1", "Aberto", date(2023, 6, 11), 0, 3, 15, 9],
+    ["Erro de compatibilidade de software", "2", "Aberto", date(2023, 6, 11), 0, 1, 11, 4]
 ]
 
 tecnico = [
@@ -66,4 +65,17 @@ prioridade =[
     ["Alta"],
     ["Média"],
     ["Baixa"]
+]
+
+ativos = [
+    ['Impressora', '2j46yjt', '3'],
+    ['Computador', 'f34-fk', '1'],
+    ['Switch', 't23r-fgt34', '5'],
+    ['Laptop', '7g-9hj', '2'],
+    ['Servidor', 'k56-2j', '6'],
+    ['Roteador', 't3g5-1k', '4'],
+    ['Desktop', 'r45-bnm', '1'],
+    ['Impressora', 'p1q-rst', '3'],
+    ['Computador', 'mno-xyz', '4'],
+    ['Switch', '9ab-8cd', '2']
 ]

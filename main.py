@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import BancoRepository as br
+import json
 
 app = FastAPI()
 
@@ -19,3 +20,11 @@ async def selectTabela(nome_tabela: str):
 @app.get("/exercicio1")
 async def exercicio1():
   return { "Resultado": f" {br.exercicio1()}!"}
+
+@app.get("/exercicio2")
+async def exercicio2():
+  return { "Resultado": f" {br.exercicio2()}!"}
+
+@app.get("/exercicio3")
+async def exercicio3():
+  return f" {br.exercicio3()}!"

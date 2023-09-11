@@ -4,6 +4,7 @@ nomesTabelas = ["T_Departamento",
                "T_Tecnico",
                "T_Prioridade",
                "T_Usuario",
+                "T_Ativo",
                "T_Chamado"]
 
 scriptCriacao_tChamado = '''
@@ -16,9 +17,11 @@ scriptCriacao_tChamado = '''
         id_Tecnico INTEGER,
         id_Usuario INTEGER,
         id_Prioridade INTEGER,
+        id_Ativos INTEGER,
         FOREIGN KEY (id_Tecnico) REFERENCES T_Tecnico(id),
         FOREIGN KEY (id_Usuario) REFERENCES T_Usuario(id),
-        FOREIGN KEY (id_Prioridade) REFERENCES T_Prioridade(id)
+        FOREIGN KEY (id_Prioridade) REFERENCES T_Prioridade(id),
+        FOREIGN KEY (id_Ativos) REFERENCES T_Ativos(id)
     )
 '''
 
@@ -59,15 +62,27 @@ scriptCriacao_tPrioridade =  '''
               )
 '''
 
+scriptCriacao_tAtivos =  '''
+              CREATE TABLE IF NOT EXISTS T_Ativos(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                nome VARCHAR(20),
+                numero_serie VARCHAR(30),
+                id_departamento INTEGER,
+                FOREIGN KEY (id_departamento) REFERENCES T_Departamento(id)
+              )
+'''
+
 scriptInsert_tChamado = {
   'script': '''
     INSERT INTO T_Chamado (descricao, 
                           data_Fechamento, 
                           data_abertura, 
-                          status, id_Tecnico, 
+                          status, 
+                          id_Tecnico, 
                           id_Usuario, 
-                          id_Prioridade)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
+                          id_Prioridade,
+                          id_Ativos)
+    VALUES (?, ?, ?, ?, ?, ?, ?,?)
 ''',
 'dado': dados.chamado }
 
@@ -93,7 +108,6 @@ scriptInsert_tUsuario = {
 ''',
 'dado': dados.usuario }
 
-
 scriptInsert_tPrioridade = {
   'script': '''
     INSERT INTO T_Prioridade (descricao)
@@ -101,6 +115,12 @@ scriptInsert_tPrioridade = {
 ''',
 'dado': dados.prioridade}
 
+scriptInsert_tAtivos = {
+  'script': '''
+    INSERT INTO T_Ativos (nome, numero_serie, id_Departamento)
+    VALUES (?,?,?)
+''',
+'dado': dados.ativos}
 
 
 # Relação dos usuários em ordem crescente, com seus respectivos departamentos.
@@ -111,16 +131,19 @@ script_exercicio1 = f'''
                   ORDER BY u.nome               
 '''
 
-SELECT C.*, U.nome AS nome_usuario_abertura
+script_exercicio2 = f'''SELECT C.*, U.nome AS nome_usuario_abertura
 FROM T_Chamado C
 INNER JOIN T_Usuario U ON C.id_Usuario = U.id
-
-
-
+'''
+script_exercicio3 = f'''SELECT A.nome AS nome_ativo, D.descricao AS nome_departamento
+FROM T_Ativos A
+INNER JOIN T_Departamento D ON A.id_departamento = D.id;
+'''
 scriptsCriacao =  [scriptCriacao_tDepartamento,
                    scriptCriacao_tTecnico,
                    scriptCriacao_tPrioridade,
                    scriptCriacao_tUsuario,
+                   scriptCriacao_tAtivos,
                    scriptCriacao_tChamado]
 
 
@@ -128,4 +151,5 @@ scriptsInserts = [scriptInsert_tDepartamento,
                  scriptInsert_tTecnico,
                  scriptInsert_tPrioridade,
                  scriptInsert_tUsuario,
+                 scriptInsert_tAtivos,
                  scriptInsert_tChamado]
